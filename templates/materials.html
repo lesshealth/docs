@@ -1,0 +1,7 @@
+<h2>Список материалов</h2>
+<ul>
+  {% for material in materials %}
+    <li>{{ material['Name'] }} — {{ material['Cost'] }} руб.</li>
+  {% endfor %}
+</ul>
+<a href="/">На главную</a>

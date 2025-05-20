@@ -1,0 +1,17 @@
+<h2>Продукт: {{ product['Name'] }}</h2>
+
+{% if materials %}
+  <h3>Используемые материалы:</h3>
+  <ul>
+    {% for m in materials %}
+      <li>
+        {{ m['Name'] }} — {{ m['Quantity'] }} шт. × {{ m['Cost'] }} руб. = {{ m['Quantity'] * m['Cost'] }} руб.
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>У этого продукта пока нет связанных материалов.</p>
+{% endif %}
+
+<br>
+<a href="/products">Назад к продукции</a>
