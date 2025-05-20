@@ -9,3 +9,19 @@
   {% endfor %}
 </ul>
 <a href="/">На главную</a>
+
+
+<!-- 
+<h2>Список продукции</h2>
+<a href="/add_product">+ Добавить продукцию</a>
+<ul>
+  {% for product in products %}
+    <li>
+      {{ product['Name'] }} ({{ product['Category'] }}) — {{ product['Description'] }}<br>
+      Размер: {{ product['Width'] }} × {{ product['Height'] }}<br>
+      — <a href="/edit_product/{{ product['ID'] }}">Редактировать</a>
+      — <a href="/product/{{ product['ID'] }}">Подробнее</a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="/">На главную</a> -->

@@ -1,0 +1,51 @@
+-- Удаление таблиц, если они уже есть (для чистого запуска)
+DROP TABLE IF EXISTS ProductMaterial;
+DROP TABLE IF EXISTS Product;
+DROP TABLE IF EXISTS Material;
+
+-- Таблица "Продукция"
+CREATE TABLE Product (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE
+    -- Добавь здесь поля, если появятся новые, например:
+    -- description TEXT,
+    -- category TEXT
+);
+
+-- Таблица "Материалы"
+CREATE TABLE Material (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE,
+    price REAL NOT NULL CHECK (price >= 0)
+    -- Например, если будет единица измерения:
+    -- unit TEXT
+);
+
+-- Связующая таблица "Материалы продукции" (многие ко многим)
+CREATE TABLE ProductMaterial (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    product_id INTEGER NOT NULL,
+    material_id INTEGER NOT NULL,
+    quantity INTEGER NOT NULL CHECK (quantity >= 0),
+
+    -- Внешние ключи
+    FOREIGN KEY (product_id) REFERENCES Product(id) ON DELETE CASCADE,
+    FOREIGN KEY (material_id) REFERENCES Material(id) ON DELETE CASCADE
+);
+
+-- Пример для другой возможной таблицы, если Excel даст другую структуру
+-- Например: сотрудники
+-- CREATE TABLE Employee (
+--     id INTEGER PRIMARY KEY AUTOINCREMENT,
+--     full_name TEXT NOT NULL,
+--     position TEXT,
+--     salary REAL
+-- );
+
+-- Или, например, поставщики
+-- CREATE TABLE Supplier (
+--     id INTEGER PRIMARY KEY AUTOINCREMENT,
+--     name TEXT NOT NULL,
+--     phone TEXT,
+--     email TEXT
+-- );

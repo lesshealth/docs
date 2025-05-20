@@ -15,3 +15,27 @@
 
 <br>
 <a href="/products">Назад к продукции</a>
+
+<!-- 
+<h2>Продукт: {{ product['Name'] }}</h2>
+
+<p><strong>Описание:</strong> {{ product['Description'] or 'Нет описания' }}</p>
+<p><strong>Категория:</strong> {{ product['Category'] or 'Не указана' }}</p>
+<p><strong>Размер:</strong> {{ product['Width'] }} × {{ product['Height'] }}</p>
+
+{% if materials %}
+  <h3>Используемые материалы:</h3>
+  <ul>
+    {% for m in materials %}
+      <li>
+        {{ m['Name'] }} — {{ m['Quantity'] }} шт. × {{ m['Cost'] }} руб. = {{ m['Quantity'] * m['Cost'] }} руб.
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>У этого продукта пока нет связанных материалов.</p>
+{% endif %}
+
+<br>
+<a href="/products">Назад к продукции</a> -->
+
