@@ -49,3 +49,11 @@ CREATE TABLE ProductMaterial (
 --     phone TEXT,
 --     email TEXT
 -- );
+
+
+CREATE TABLE User (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,  -- Уникальный идентификатор, автоинкремент
+    Username TEXT NOT NULL UNIQUE,         -- Уникальное имя, обязательно для заполнения
+    Email TEXT,
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP  -- Значение по умолчанию: текущая дата-время
+);
