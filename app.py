@@ -180,3 +180,12 @@ def product_detail(product_id):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+# Функция для расчёта общей стоимости материалов продукта
+def calculate_total_cost(materials):
+    total = 0
+    for m in materials:
+        total += m['Quantity'] * m['Cost']
+    return total
