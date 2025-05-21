@@ -57,3 +57,35 @@ CREATE TABLE User (
     Email TEXT,
     CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP  -- Значение по умолчанию: текущая дата-время
 );
+
+CREATE TABLE Product (
+    ID INTEGER PRIMARY KEY,
+    Name TEXT NOT NULL,
+    Description TEXT,
+    Price REAL CHECK (Price >= 0),  -- Проверка: цена не может быть отрицательной
+    InStock INTEGER DEFAULT 1       -- Булево значение (0/1), по умолчанию "в наличии"
+);
+
+CREATE TABLE Order (
+    ID INTEGER PRIMARY KEY,
+    UserID INTEGER NOT NULL,
+    TotalAmount REAL NOT NULL,
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES User(ID)  -- Внешний ключ на таблицу User
+);
+
+CREATE TABLE ProductTag (
+    ProductID INTEGER,
+    TagID INTEGER,
+    PRIMARY KEY (ProductID, TagID),
+    FOREIGN KEY (ProductID) REFERENCES Product(ID),
+    FOREIGN KEY (TagID) REFERENCES Tag(ID)
+);
+
+SQLite тип	    Назначение
+INTEGER	        Целые числа
+REAL	        Вещественные (float/double)
+TEXT	        Строки
+BLOB	        Двоичные данные
+NUMERIC	        Автовыбор между INTEGER и REAL
+DATETIME	    По соглашению — формат даты
